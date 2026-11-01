@@ -7,6 +7,8 @@ on:
     paths:
       - 'client/**'
 
+  workflow_dispatch: # <--- ADD THIS LINE
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
