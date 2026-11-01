@@ -1,0 +1,29 @@
+name: Deploy FastAPI Backend
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'server/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/Coburn_Precision_Works
+            git pull origin main
+            cd server
+            docker build -t coburn-backend .
+            docker stop coburn-api || true
+            docker rm coburn-api || true
+            # Make sure you have created your .env file on the EC2 instance inside the server/ folder!
+            docker run -d --name coburn-api --env-file .env -p 8000:8000 coburn-backend
