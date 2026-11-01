@@ -40,7 +40,7 @@ api.interceptors.response.use(
         isRefreshing = true;
         try {
           const res = await axios.post(
-            'http://localhost:8000/api/auth/refresh',
+            'https://djo6mvw7bibpd.cloudfront.net/api/auth/refresh',
             {},
             { withCredentials: true }
           );

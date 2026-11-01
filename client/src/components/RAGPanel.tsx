@@ -56,7 +56,7 @@ export const RAGPanel = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
 
     try {
       const token = sessionStorage.getItem('accessToken');
-      const res = await fetch('http://localhost:8000/api/ai/rag-stream', {
+      const res = await fetch('https://djo6mvw7bibpd.cloudfront.net/api/ai/rag-stream', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
