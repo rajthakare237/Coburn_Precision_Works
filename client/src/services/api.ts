@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://51.20.255.26:8000/api',  //OLD: baseURL: 'http://localhost:8000/api',
+  baseURL: "https://djo6mvw7bibpd.cloudfront.net", //cloudfront domain  //OLD: baseURL: 'http://localhost:8000/api',
   withCredentials: true, // Sends HttpOnly refresh_token cookie automatically
   headers: {
     'Content-Type': 'application/json',
