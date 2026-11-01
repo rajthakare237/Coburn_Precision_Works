@@ -1,0 +1,90 @@
+@import '../styles/variables';
+
+.page-wrapper {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 0.9rem;
+  background: #ffffff;
+  color: #1e293b;
+
+  &:focus {
+    border-color: $primary-blue;
+  }
+}
+
+.form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.35rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/* 3-Line Clamped Ticket Description */
+.ticket-description-clamp {
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0.5rem 0 0.75rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket-meta-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.65rem;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
+  gap: 1rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid $primary-blue;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

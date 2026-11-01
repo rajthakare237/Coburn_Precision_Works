@@ -1,0 +1,142 @@
+@import '../styles/variables';
+
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: $sidebar-width;
+  background: #fff;
+  border-right: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  z-index: 40;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: $bg-light;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ai-search-container {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 99px;
+  padding: 0.45rem 1rem;
+  width: 500px;
+  transition: all 0.25s ease;
+
+  &:focus-within {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+  }
+
+  .clear-query-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0.2rem;
+    color: #94a3b8;
+
+    &:hover {
+      color: #475569;
+    }
+  }
+}
+
+.ai-response-panel {
+  background: #f8fafc;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 1.25rem 1.75rem;
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.02);
+  max-height: 50vh;
+  overflow-y: auto;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.collapsed {
+    max-height: 65px;
+    padding-bottom: 1.25rem;
+    overflow: hidden;
+  }
+}
+
+.ai-response-body {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.floating-bot {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: $primary-blue;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  cursor: pointer;
+  z-index: 100;
+  border: none;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    height: 100%;
+    transform: translateX(-100%);
+  }
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+  }
+  .mobile-only {
+    display: block;
+  }
+  .ai-search-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}

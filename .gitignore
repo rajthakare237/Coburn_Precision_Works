@@ -1,0 +1,22 @@
+# Node (Frontend)
+node_modules/
+dist/
+build/
+.npm/
+
+# Python (Backend)
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Environment Variables (CRITICAL)
+.env
+.env.local
+.env.*
+
+# OS Files
+.DS_Store
+Thumbs.db
